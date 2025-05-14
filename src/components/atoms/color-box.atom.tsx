@@ -16,12 +16,13 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
 
   if (selected) {
     return (
-      <div className={`border-2 border-secondary p-0.5 w-fit ${commonClasses}`}>
+      <div className={`border-2 border-primary p-0.5 w-fit ${commonClasses}`}>
         <div
           className={`w-16 h-6 ${commonClasses}`}
           style={{ backgroundColor: color }}
           tabIndex={tabIndex}
           onClick={onClick}
+          role="button"
         />
       </div>
     );
@@ -33,6 +34,7 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
       style={{ backgroundColor: color }}
       tabIndex={tabIndex}
       onClick={onClick}
+      role="button"
     />
   );
 };

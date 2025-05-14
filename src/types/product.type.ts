@@ -2,7 +2,6 @@ type AttributeName = 'color' | 'size';
 
 type AttributeValue = {
   value: string;
-  hex?: string;
   label?: string;
 };
 

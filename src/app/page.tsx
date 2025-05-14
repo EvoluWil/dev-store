@@ -1,13 +1,14 @@
 'use client';
 
-import { ColorPicker } from '@/molecules/color-picker.molecule';
+import { RadioPicker } from '@/components/molecules/radio-picker.molecule';
 
 export default function Home() {
   return (
     <>
-      <ColorPicker
+      <RadioPicker
+        type="COLOR"
         onSelect={() => console.log('ColorBox clicked')}
-        colors={[
+        options={[
           {
             value: '#FF0000',
             label: 'Red',
@@ -19,6 +20,24 @@ export default function Home() {
           {
             value: '#0000FF',
             label: 'Blue',
+          },
+        ]}
+      />
+      <RadioPicker
+        type="SIZE"
+        onSelect={() => console.log('ColorBox clicked')}
+        options={[
+          {
+            value: 'S',
+            label: 'Small',
+          },
+          {
+            value: 'M',
+            label: 'Medium',
+          },
+          {
+            value: 'L',
+            label: 'Large',
           },
         ]}
       />

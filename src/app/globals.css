@@ -1,35 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #010101;
-  --secondary: #333333;
+  --bg: #ffffff;
+  --bg-secondary: #f0f0f0;
+  --text-primary: #010101;
+  --text-secondary: #333333;
+  --border-secondary: #DDDDDD;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-secondary: var(--secondary)
+  --color-bg: var(--bg);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary)
+  --color-border-secondary: var(--border-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #FEFEFE;
-    --secondary: #CCCCCC;
+    --bg: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #FEFEFE;
+    --text-secondary: #CCCCCC;
+    --border-secondary: #444444;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text-primary);
   font-family: "Roboto", sans-serif;
 }
 
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
 .text-secondary {
-  color: var(--secondary);
+  color: var(--text-secondary);
+}
+
+.border-primary {
+  border-color: var(--text-primary);
 }
 
 .border-secondary {
-  border-color: var(--secondary);
+  border-color: var(--border-secondary);
 }
