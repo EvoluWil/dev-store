@@ -1,7 +1,9 @@
 'use client';
 
 import { Icon } from '@/components/atoms/icon.atom';
+import { Rating } from '@/components/atoms/rating.atom';
 import { Button } from '@/components/molecules/button.molecule';
+import { ProductTitle } from '@/components/molecules/product-title.molecule';
 import { RadioPicker } from '@/components/molecules/radio-picker.molecule';
 
 export default function Home() {
@@ -56,6 +58,8 @@ export default function Home() {
         Add to Cart
       </Button>
       <Icon name="home" className="text-4xl text-primary" />
+      <ProductTitle title="Long Sleeve Overshirt, Khaki, 6" price={1999} />
+      <Rating value={4} />
     </>
   );
 }
