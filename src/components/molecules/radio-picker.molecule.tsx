@@ -1,12 +1,14 @@
 import { Option } from '@/types/commons.type';
 import { useState } from 'react';
 import { ColorBox } from '../atoms/color-box.atom';
+import { ImageBox } from '../atoms/image-box.atom';
 import { SizeBox } from '../atoms/size-box.atom';
 import { Tooltip } from '../atoms/tooltip.atom';
 
 enum TypeEnum {
   COLOR = 'COLOR',
   SIZE = 'SIZE',
+  IMAGE = 'IMAGE',
 }
 
 type RadioPickerProps = {
@@ -14,6 +16,7 @@ type RadioPickerProps = {
   onSelect: (color: string) => void;
   defaultRadioValue?: string;
   type: keyof typeof TypeEnum;
+  label?: string;
 };
 
 export const RadioPicker: React.FC<RadioPickerProps> = ({
@@ -21,6 +24,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
   onSelect,
   defaultRadioValue,
   type,
+  label,
 }) => {
   const [selectedRadio, setSelectedRadio] = useState<Option | null>(() => {
     if (defaultRadioValue) {
@@ -36,9 +40,9 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
 
   return (
     <div aria-label="Radio Picker">
-      {!!selectedRadio && (
+      {!!selectedRadio && !!label && (
         <div className="flex gap-2">
-          <span className="text-secondary">Selected:</span>
+          <span className="text-secondary">{label}:</span>
           <label className="font-bold">{selectedRadio?.label}</label>
         </div>
       )}
@@ -58,6 +62,16 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
             {type === TypeEnum.COLOR && (
               <ColorBox
                 color={item.value}
+                selected={item === selectedRadio}
+                tabIndex={index}
+                onClick={() => handleSelect(item)}
+              />
+            )}
+
+            {type === TypeEnum.IMAGE && (
+              <ImageBox
+                src={item.value}
+                alt={item.label}
                 selected={item === selectedRadio}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
