@@ -82,7 +82,11 @@ export default function Home() {
         Add to Cart
       </Button>
       <Icon name="home" className="text-4xl text-primary" />
-      <ProductTitle title="Long Sleeve Overshirt, Khaki, 6" price={1999} />
+      <ProductTitle
+        title="Long Sleeve Overshirt, Khaki, 6"
+        subtitle="This is a long description of the product. It contains a lot of information about the product, its features, and its benefits. It is meant to give the customer a clear understanding of what they are buying. The description is very detailed and informative."
+        price={1999}
+      />
       <Rating value={4} />
       <ImageBox
         src="/images/products/001-001-1.webp"
