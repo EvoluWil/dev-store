@@ -34,7 +34,8 @@ export const PRODUCTS: Product[] = [
         id: '001-001',
         attributes: {
           color: {
-            value: '#A0D3E8',
+            value: 'blue',
+            hex: '#A0D3E8',
             label: 'Azul Claro',
           },
           size: {
@@ -50,7 +51,8 @@ export const PRODUCTS: Product[] = [
         id: '001-002',
         attributes: {
           color: {
-            value: '#FFF3B0',
+            value: 'yellow',
+            hex: '#FFF3B0',
             label: 'Amarelo Claro',
           },
           size: {
@@ -66,7 +68,8 @@ export const PRODUCTS: Product[] = [
         id: '001-003',
         attributes: {
           color: {
-            value: '#000000',
+            value: 'black',
+            hex: '#000000',
             label: 'Preto',
           },
           size: {
@@ -104,7 +107,8 @@ export const PRODUCTS: Product[] = [
         id: '002-001',
         attributes: {
           color: {
-            value: '#FFFFFF',
+            value: 'white',
+            hex: '#FFFFFF',
             label: 'Branco',
           },
           size: {
@@ -120,7 +124,8 @@ export const PRODUCTS: Product[] = [
         id: '002-002',
         attributes: {
           color: {
-            value: '#B0B0B0',
+            value: 'gray',
+            hex: '#B0B0B0',
             label: 'Cinza',
           },
           size: {
@@ -161,7 +166,8 @@ export const PRODUCTS: Product[] = [
         id: '003-001',
         attributes: {
           color: {
-            value: '#00296b',
+            value: 'blue',
+            hex: '#00296b',
             label: 'Azul Marinho',
           },
           size: {
@@ -177,7 +183,8 @@ export const PRODUCTS: Product[] = [
         id: '003-002',
         attributes: {
           color: {
-            value: '#ffffff',
+            value: 'white',
+            hex: '#ffffff',
             label: 'Branco',
           },
           size: {
@@ -219,7 +226,8 @@ export const PRODUCTS: Product[] = [
         id: '005-001',
         attributes: {
           color: {
-            value: '#fff3b0',
+            value: 'yellow',
+            hex: '#fff3b0',
             label: 'Amarelo Claro',
           },
         },
@@ -231,7 +239,8 @@ export const PRODUCTS: Product[] = [
         id: '005-002',
         attributes: {
           color: {
-            value: '#1b4332',
+            value: 'green',
+            hex: '#1b4332',
             label: 'Verde Escuro',
           },
         },

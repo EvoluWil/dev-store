@@ -4,35 +4,37 @@ import { Divider } from '../atoms/divider.atom';
 import { Rating } from '../atoms/rating.atom';
 
 type ProductTitleProps = {
-  title: string;
-  subtitle?: string;
-  subTitleLimitChars?: number;
+  name: string;
   price: number;
+  rating: number;
+  description?: string;
+  subTitleLimitChars?: number;
 };
 
 export const ProductTitle: React.FC<ProductTitleProps> = ({
-  title,
-  subtitle = '',
-  subTitleLimitChars = 200,
+  name,
   price,
+  rating,
+  description = '',
+  subTitleLimitChars = 200,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const isLong = subtitle.length > subTitleLimitChars;
+  const isLong = description.length > subTitleLimitChars;
   const displayedText = expanded
-    ? subtitle
-    : subtitle.slice(0, subTitleLimitChars);
+    ? description
+    : description.slice(0, subTitleLimitChars);
 
   return (
-    <div className="flex flex-col items-start">
-      <h1 className="text-lg font-bold text-primary">{title}</h1>
+    <div className="flex flex-col items-start gap-4">
+      <h1 className="text-lg font-bold text-primary">{name}</h1>
       <div className="flex items-center gap-2 justify-between w-full">
         <span className="text-xl text-secondary">{formatCurrency(price)}</span>
-        <Rating value={4} />
+        <Rating value={rating} />
       </div>
       <Divider />
       <span className="text-primary font-bold">Description:</span>
-      <p className="whitespace-pre-line">
+      <p className="whitespace-pre-line min-h-25">
         {displayedText}
         {isLong && !expanded && '...'}
         {isLong && (

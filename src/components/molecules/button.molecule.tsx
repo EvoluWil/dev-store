@@ -7,9 +7,9 @@ enum ButtonVariantEnum {
 }
 
 type ButtonProps = {
-  icon: string;
   onClick?: () => void;
   className?: string;
+  icon?: string;
   size?: number;
   variant?: keyof typeof ButtonVariantEnum;
 };
@@ -28,7 +28,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
         variant === ButtonVariantEnum.CONTAINED ? 'bg-secondary' : ''
       } border border-secondary ${className}`}
     >
-      <Icon name={icon} className={children ? 'mr-1' : ''} />
+      {icon && <Icon name={icon} className={children ? 'mr-1' : ''} />}
       {children}
     </button>
   );

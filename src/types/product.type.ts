@@ -2,6 +2,7 @@ type AttributeName = 'color' | 'size';
 
 type AttributeValue = {
   value: string;
+  hex?: string;
   label?: string;
 };
 
@@ -14,7 +15,7 @@ type ProductVariation = {
 };
 
 type ImagesByAttribute = {
-  [attribute in AttributeName]?: {
+  color: {
     [value: string]: string[];
   };
 };
