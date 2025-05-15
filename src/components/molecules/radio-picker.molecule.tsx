@@ -9,12 +9,12 @@ enum TypeEnum {
   SIZE = 'SIZE',
 }
 
-interface RadioPickerProps {
+type RadioPickerProps = {
   options: Option[];
   onSelect: (color: string) => void;
   defaultRadioValue?: string;
   type: keyof typeof TypeEnum;
-}
+};
 
 export const RadioPicker: React.FC<RadioPickerProps> = ({
   options,
