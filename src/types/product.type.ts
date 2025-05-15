@@ -22,6 +22,7 @@ type ImagesByAttribute = {
 export type Product = {
   id: string;
   name: string;
+  rating: number;
   description: string;
   has_variations: boolean;
   variationAttributes?: AttributeName[];

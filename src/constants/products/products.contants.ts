@@ -4,6 +4,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '001',
     name: 'Camiseta Slim Masculina Básica',
+    rating: 4.5,
     description: 'Camiseta masculina básica de algodão com modelagem slim.',
     has_variations: true,
     variationAttributes: ['color', 'size'],
@@ -82,6 +83,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '002',
     name: 'Camiseta Estampada Masculina',
+    rating: 4.2,
     description: 'Camiseta masculina com estampa frontal moderna.',
     has_variations: true,
     variationAttributes: ['color', 'size'],
@@ -135,6 +137,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '003',
     name: 'Camiseta Gola V Masculina',
+    rating: 4.0,
     description: 'Camiseta masculina com gola V em tecido leve.',
     has_variations: true,
     variationAttributes: ['color', 'size'],
@@ -191,6 +194,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '004',
     name: 'Xícara de Porcelana Branca',
+    rating: 4.8,
     description: 'Xícara de porcelana branca com capacidade de 200ml.',
     has_variations: false,
     images: ['/images/products/004-1.webp'],
@@ -200,6 +204,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '005',
     name: 'Ecobag Estampada Tie-Dye',
+    rating: 4.6,
     description: 'Ecobag de algodão com estampa tie-dye colorida.',
     has_variations: true,
     variationAttributes: ['color'],
