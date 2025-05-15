@@ -1,9 +1,9 @@
-interface SizeBoxProps {
+type SizeBoxProps = {
   label: string;
   tabIndex?: number;
   selected?: boolean;
   onClick: () => void;
-}
+};
 
 export const SizeBox: React.FC<SizeBoxProps> = ({
   label,

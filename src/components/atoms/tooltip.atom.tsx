@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 
-interface TooltipProps {
+type TooltipProps = {
   title: string;
-}
+};
 
 export const Tooltip: React.FC<PropsWithChildren<TooltipProps>> = ({
   title,

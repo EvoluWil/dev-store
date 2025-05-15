@@ -1,9 +1,9 @@
-interface ColorBoxProps {
+type ColorBoxProps = {
   color: string;
   tabIndex?: number;
   selected?: boolean;
   onClick: () => void;
-}
+};
 
 export const ColorBox: React.FC<ColorBoxProps> = ({
   color,

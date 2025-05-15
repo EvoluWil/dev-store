@@ -1,5 +1,7 @@
 'use client';
 
+import { Icon } from '@/components/atoms/icon.atom';
+import { Button } from '@/components/molecules/button.molecule';
 import { RadioPicker } from '@/components/molecules/radio-picker.molecule';
 
 export default function Home() {
@@ -41,6 +43,19 @@ export default function Home() {
           },
         ]}
       />
+      <Button
+        icon="home"
+        onClick={() => console.log('IconButton clicked')}
+        className="bg-primary text-white"
+      />
+      <Button
+        icon="add_shopping_cart"
+        onClick={() => console.log('IconButton clicked')}
+        className="bg-primary text-white w-full"
+      >
+        Add to Cart
+      </Button>
+      <Icon name="home" className="text-4xl text-primary" />
     </>
   );
 }
