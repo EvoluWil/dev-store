@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { ToastContainer } from 'react-toastify';
 import './globals.css';
 
 const roboto = Roboto({
@@ -25,7 +26,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+      <body className={`${roboto.className} antialiased`}>
+        <ToastContainer />
+        {children}
+      </body>
     </html>
   );
 }
