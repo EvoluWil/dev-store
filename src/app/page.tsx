@@ -2,6 +2,7 @@
 
 import { Icon } from '@/components/atoms/icon.atom';
 import { ImageBox } from '@/components/atoms/image-box.atom';
+import { ImageWatch } from '@/components/atoms/image-watch.atom';
 import { Rating } from '@/components/atoms/rating.atom';
 import { Button } from '@/components/molecules/button.molecule';
 import { ProductTitle } from '@/components/molecules/product-title.molecule';
@@ -91,6 +92,11 @@ export default function Home() {
       <ImageBox
         src="/images/products/001-001-1.webp"
         onClick={() => console.log('Image clicked')}
+      />
+      <ImageWatch
+        src={'/images/products/001-001-1.webp'}
+        width={400}
+        height={400}
       />
     </>
   );
