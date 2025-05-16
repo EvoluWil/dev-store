@@ -2,7 +2,7 @@ export type Option = {
   label: string;
   value: string;
   id: string;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export type Variant = {
