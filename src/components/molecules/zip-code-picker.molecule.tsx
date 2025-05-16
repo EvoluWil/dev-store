@@ -11,20 +11,27 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   loading?: boolean;
   defaultValue?: string;
   onChangeValue: (value: string) => void;
+  onClearValue: () => void;
 }
 
 export const ZipCodePicker = ({
-  defaultValue,
+  defaultValue = '',
   onChangeValue,
+  onClearValue,
   loading = false,
   label,
   ...inputBaseProps
 }: Props) => {
-  const [value, setValue] = useState<string>(defaultValue || '');
+  const [value, setValue] = useState<string>('');
   const debouncedValue = useDebounce(value, 500);
 
   const handleChange = (newValue: string) => {
     setValue(newValue);
+  };
+
+  const handleClearValue = () => {
+    setValue('');
+    onClearValue();
   };
 
   useEffect(() => {
@@ -36,37 +43,50 @@ export const ZipCodePicker = ({
   const hasLoading = loading || debouncedValue !== value;
 
   return (
-    <InputMask
-      mask="99999-999"
-      onChange={({ target }: ChangeEvent<HTMLInputElement>) =>
-        handleChange(target.value)
-      }
-      maskPlaceholder={null}
-    >
-      <div className="relative">
-        {}
-        <label className="text-primary text-sm font-medium">
-          {value && label}
+    <div className="flex gap-1 items-center">
+      <InputMask
+        mask="99999-999"
+        onChange={({ target }: ChangeEvent<HTMLInputElement>) =>
+          handleChange(target.value)
+        }
+        maskPlaceholder={null}
+      >
+        <div className="relative w-full">
+          <label className="text-primary text-sm font-medium">
+            {value && label}
 
-          <input
-            value={value}
-            onChange={() => null}
-            type="text"
-            className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 pe-10 p-2.5 mt-1"
-            placeholder={label}
-            {...inputBaseProps}
-          />
-        </label>
-        {hasLoading && (
-          <div
-            className={`absolute inset-y-0 end-2 flex items-center ps-3.5 pointer-events-none ${
-              value ? 'mt-8' : 'mt-0'
-            }`}
+            <input
+              value={value || defaultValue}
+              onChange={() => null}
+              type="text"
+              className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 pe-10 p-2.5 mt-1 disabled:cursor-not-allowed"
+              placeholder={label}
+              disabled={!!defaultValue}
+              {...inputBaseProps}
+            />
+          </label>
+          {hasLoading && (
+            <div
+              className={`absolute inset-y-0 end-2 flex items-center ps-3.5 pointer-events-none ${
+                value ? 'mt-8' : 'mt-0'
+              }`}
+            >
+              <Icon name="autorenew" className="animate-spin" />
+            </div>
+          )}
+        </div>
+      </InputMask>
+
+      {!!defaultValue && (
+        <div className={`flex items-center ps-3.5  ${value ? 'mt-8' : 'mt-0'}`}>
+          <button
+            className="mt-2 mx-2 text-blue-500 hover:underline text-sm whitespace-nowrap cursor-pointer"
+            onClick={handleClearValue}
           >
-            <Icon name="autorenew" className="animate-spin" />
-          </div>
-        )}
-      </div>
-    </InputMask>
+            Change Zip Code
+          </button>
+        </div>
+      )}
+    </div>
   );
 };

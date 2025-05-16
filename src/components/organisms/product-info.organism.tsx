@@ -15,9 +15,9 @@ export const ProductInfo = () => {
     address,
     loading,
     handleSelectVariant,
-    handleCheckDelivery,
     handleAddToCart,
     handleAddToWishlist,
+    handleUpdateZipCode,
   } = useProducts();
 
   return (
@@ -86,7 +86,9 @@ export const ProductInfo = () => {
         </div>
         <ZipCodePicker
           label="Enter your zip code to check delivery options"
-          onChangeValue={handleCheckDelivery}
+          defaultValue={address?.cep}
+          onChangeValue={handleUpdateZipCode}
+          onClearValue={handleUpdateZipCode}
           loading={loading}
         />
 

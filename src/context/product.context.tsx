@@ -29,9 +29,9 @@ type ProductContextType = {
   images: string[];
   loading: boolean;
   handleSelectVariant: (value: string, type: 'color' | 'size') => void;
-  handleCheckDelivery: (zipCode: string) => Promise<void>;
   handleAddToWishlist: () => void;
   handleAddToCart: () => void;
+  handleUpdateZipCode: (zipCode?: string) => void;
 };
 
 const ProductContext = createContext<ProductContextType>(
@@ -113,6 +113,18 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
+  const handleUpdateZipCode = useCallback(
+    (zipCode?: string) => {
+      if (zipCode) {
+        return handleCheckDelivery(zipCode);
+      }
+
+      setAddress(null);
+      cookieService.removeAddress();
+    },
+    [handleCheckDelivery],
+  );
+
   const handleAddToWishlist = useCallback(() => {
     toast.success('Product added to wishlist');
   }, []);
@@ -124,7 +136,7 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   const images = getProductImages(currentProduct, selectedVariant?.id);
 
   useEffect(() => {
-    if (cookieService.exists(productId, 'product')) {
+    if (cookieService.productExists(productId)) {
       const savedVariant = cookieService.getProductVariant(productId);
       if (savedVariant) {
         setTempVariant(savedVariant);
@@ -145,9 +157,9 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       images,
       loading,
       handleSelectVariant,
-      handleCheckDelivery,
       handleAddToWishlist,
       handleAddToCart,
+      handleUpdateZipCode,
     }),
     [
       currentProduct,
@@ -156,9 +168,9 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       images,
       loading,
       handleSelectVariant,
-      handleCheckDelivery,
       handleAddToWishlist,
       handleAddToCart,
+      handleUpdateZipCode,
     ],
   );
 

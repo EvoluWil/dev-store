@@ -1,10 +1,10 @@
 import { Address } from '@/types/address.type';
 import { Variant } from '@/types/commons.type';
-import { getCookie, hasCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 
 class CookieService {
-  exists(key: string, type: 'product' | 'address'): boolean {
-    return hasCookie(`@dev_store:${type}-${key}`) as boolean;
+  productExists(key: string): boolean {
+    return hasCookie(`@dev_store:product-${key}`) as boolean;
   }
   getProductVariant(productId: string): Variant | null {
     const variant = getCookie(`@dev_store:product-${productId}`) as string;
@@ -25,6 +25,9 @@ class CookieService {
     setCookie(`@dev_store:address`, addressString, {
       maxAge: 60 * 15,
     });
+  }
+  removeAddress(): void {
+    deleteCookie('@dev_store:address');
   }
 }
 
