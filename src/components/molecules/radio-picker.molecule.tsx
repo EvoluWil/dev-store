@@ -53,6 +53,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
                 selected={item.id === selectedValue?.id}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
+                disabled={item.disabled}
               />
             )}
 
@@ -62,6 +63,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
                 selected={item.id === selectedValue?.id}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
+                disabled={item.disabled}
               />
             )}
 

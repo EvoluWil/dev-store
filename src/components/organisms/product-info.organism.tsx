@@ -38,6 +38,7 @@ export const ProductInfo = () => {
                     label: variant?.attributes?.color?.label || '',
                     value: variant?.attributes?.color?.value || '',
                     id: variant?.attributes?.color?.id || '',
+                    disabled: (variant?.quantity || 0) === 0,
                   })) || [],
                   'id',
                 )}
@@ -62,6 +63,7 @@ export const ProductInfo = () => {
                       label: variant?.attributes?.size?.label || '',
                       value: variant?.attributes?.size?.value || '',
                       id: variant?.attributes?.size?.id || '',
+                      disabled: (variant?.quantity || 0) === 0,
                     })) || []
                 }
                 label="Size"

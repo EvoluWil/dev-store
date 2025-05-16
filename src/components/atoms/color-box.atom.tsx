@@ -3,6 +3,7 @@ type ColorBoxProps = {
   tabIndex?: number;
   selected?: boolean;
   onClick: () => void;
+  disabled?: boolean;
 };
 
 export const ColorBox: React.FC<ColorBoxProps> = ({
@@ -10,6 +11,7 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
   tabIndex = 0,
   selected = false,
   onClick,
+  disabled = false,
 }) => {
   const commonClasses =
     'transition-all transform active:scale-90 active:opacity-80 cursor-pointer rounded';
@@ -30,10 +32,12 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
 
   return (
     <div
-      className={`w-18 h-8 border-2 border-secondary ${commonClasses}`}
+      className={`w-18 h-8 border-2 border-secondary ${commonClasses} ${
+        disabled ? ' opacity-50 !cursor-not-allowed' : ''
+      }`}
       style={{ backgroundColor: color }}
       tabIndex={tabIndex}
-      onClick={onClick}
+      onClick={!disabled ? onClick : undefined}
       role="button"
     />
   );

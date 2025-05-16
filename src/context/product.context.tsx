@@ -74,6 +74,7 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
         id: variant.id,
         color: null,
         size: null,
+        quantity: variant.quantity || 0,
       };
 
       if (variant?.attributes?.color) {

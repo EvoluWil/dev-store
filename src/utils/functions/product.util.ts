@@ -7,6 +7,7 @@ export const getProductDefaultVariant = (product: Product): Variant => {
     id: null,
     color: null,
     size: null,
+    quantity: product?.quantity || 0,
   };
 
   if (!product?.has_variations) {
@@ -22,6 +23,7 @@ export const getProductDefaultVariant = (product: Product): Variant => {
   }
 
   variant.id = defaultVariant?.id;
+  variant.quantity = defaultVariant?.quantity || 0;
 
   if (defaultVariant?.attributes?.color) {
     variant.color = defaultVariant?.attributes?.color?.id;
