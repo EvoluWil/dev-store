@@ -5,10 +5,10 @@ import { PRODUCTS } from '@/constants/products/products.constants';
 
 export default function Home() {
   return (
-    <div className="px-8 max-w-screen-xl mx-auto">
+    <div className="px-8 max-w-screen-xl mx-auto w-full">
       <ProductDetail />
       <Divider />
-      <div className="flex flex-col gap-4 p-4 max-w-60">
+      <div className="flex flex-col gap-4 max-w-60">
         <ProductCard product={PRODUCTS[0]} />
       </div>
     </div>
