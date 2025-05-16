@@ -43,7 +43,10 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
 
       <div className="flex gap-4" role="radiogroup">
         {options.map((item, index) => (
-          <Tooltip key={item.id} title={item.label}>
+          <Tooltip
+            key={item.id}
+            title={type !== TypeEnum.IMAGE ? item.label : ''}
+          >
             {type === TypeEnum.SIZE && (
               <SizeBox
                 label={item.value}
