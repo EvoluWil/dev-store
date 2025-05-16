@@ -28,6 +28,8 @@ type ProductContextType = {
   loading: boolean;
   handleSelectVariant: (value: string, type: 'color' | 'size') => void;
   handleCheckDelivery: (zipCode: string) => Promise<void>;
+  handleAddToWishlist: () => void;
+  handleAddToCart: () => void;
 };
 
 const ProductContext = createContext<ProductContextType>(
@@ -99,6 +101,14 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
+  const handleAddToWishlist = useCallback(() => {
+    toast.success('Product added to wishlist');
+  }, []);
+
+  const handleAddToCart = useCallback(() => {
+    toast.success('Product added to cart');
+  }, []);
+
   const images = getProductImages(currentProduct, selectedVariant?.id);
 
   const valueProvider = useMemo(
@@ -110,6 +120,8 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       loading,
       handleSelectVariant,
       handleCheckDelivery,
+      handleAddToWishlist,
+      handleAddToCart,
     }),
     [
       currentProduct,
@@ -119,6 +131,8 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       loading,
       handleSelectVariant,
       handleCheckDelivery,
+      handleAddToWishlist,
+      handleAddToCart,
     ],
   );
 

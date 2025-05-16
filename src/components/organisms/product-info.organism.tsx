@@ -16,6 +16,8 @@ export const ProductInfo = () => {
     loading,
     handleSelectVariant,
     handleCheckDelivery,
+    handleAddToCart,
+    handleAddToWishlist,
   } = useProducts();
 
   return (
@@ -71,11 +73,15 @@ export const ProductInfo = () => {
           </div>
         )}
         <div className="flex gap-2 items-center justify-between mt-4">
-          <Button onClick={() => {}} className="w-full">
+          <Button onClick={handleAddToWishlist} className="w-full">
             Add to Wishlist
           </Button>
-          <Button onClick={() => {}} variant="OUTLINED" className="w-full">
-            Compare
+          <Button
+            onClick={handleAddToCart}
+            variant="OUTLINED"
+            className="w-full"
+          >
+            Add to Cart
           </Button>
         </div>
         <ZipCodePicker
