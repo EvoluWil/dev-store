@@ -8,7 +8,7 @@ import { Product } from '@/types/product.type';
 import {
   getProductDefaultVariant,
   getProductImages,
-} from '@/utils/functions/product';
+} from '@/utils/functions/product.util';
 import { useParams } from 'next/navigation';
 import {
   createContext,
@@ -42,9 +42,21 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
 
   const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState<Address | null>(null);
-  const [selectedVariant, setSelectedVariant] = useState(
-    getProductDefaultVariant(currentProduct),
-  );
+
+  const [tempVariant, setTempVariant] = useState<Variant | null>(null);
+
+  const selectedVariant = useMemo(() => {
+    if (
+      !tempVariant ||
+      currentProduct?.variations?.every(
+        (variant) => variant.id !== tempVariant?.id,
+      )
+    ) {
+      return getProductDefaultVariant(currentProduct);
+    }
+
+    return tempVariant;
+  }, [currentProduct, tempVariant]);
 
   const handleSelectVariant = useCallback(
     (value: string, type: 'color' | 'size') => {
@@ -70,7 +82,7 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
         newVariant.size = variant?.attributes?.size?.id;
       }
 
-      setSelectedVariant(newVariant);
+      setTempVariant(newVariant);
     },
     [currentProduct],
   );

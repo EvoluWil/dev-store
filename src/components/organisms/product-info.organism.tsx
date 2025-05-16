@@ -2,7 +2,7 @@
 
 import { useProducts } from '@/context/product.context';
 import { filterDuplicate } from '@/utils/functions/array.util';
-import { getProductPrice } from '@/utils/functions/product';
+import { getProductPrice } from '@/utils/functions/product.util';
 import { Button } from '../molecules/button.molecule';
 import { ProductTitle } from '../molecules/product-title.molecule';
 import { RadioPicker } from '../molecules/radio-picker.molecule';

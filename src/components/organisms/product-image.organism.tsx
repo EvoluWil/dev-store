@@ -1,6 +1,5 @@
 'use client';
 
-import { useProducts } from '@/context/product.context';
 import { useProductImage } from '@/hooks/product-image.hook';
 import { ImageWatch } from '../atoms/image-watch.atom';
 import { Button } from '../molecules/button.molecule';
@@ -12,14 +11,14 @@ enum TypeUpdateImageEnum {
 }
 
 export const ProductImage = () => {
-  const { currentProduct, images } = useProducts();
-
   const {
     selectedImage,
     handleUpdateImage,
     handleUpdateImageIndex,
     handleShareLink,
-  } = useProductImage({ images });
+    currentProduct,
+    images,
+  } = useProductImage();
   return (
     <>
       <div className="flex gap-4">

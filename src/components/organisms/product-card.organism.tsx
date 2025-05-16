@@ -5,7 +5,7 @@ import {
   getProductDefaultVariant,
   getProductImages,
   getProductPrice,
-} from '@/utils/functions/product';
+} from '@/utils/functions/product.util';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ProductTitle } from '../molecules/product-title.molecule';

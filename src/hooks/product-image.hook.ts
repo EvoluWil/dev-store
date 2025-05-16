@@ -1,4 +1,5 @@
 import { DEFAULT_IMAGE } from '@/constants/images/default-image.constants';
+import { useProducts } from '@/context/product.context';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -7,11 +8,9 @@ enum TypeUpdateImageEnum {
   PREVIOUS = 'PREVIOUS',
 }
 
-type ProductImageHookProps = {
-  images: string[];
-};
+export const useProductImage = () => {
+  const { currentProduct, images } = useProducts();
 
-export const useProductImage = ({ images }: ProductImageHookProps) => {
   const [selectedImage, setSelectedImage] = useState<string>(
     images?.[0] || DEFAULT_IMAGE,
   );
@@ -47,5 +46,7 @@ export const useProductImage = ({ images }: ProductImageHookProps) => {
     handleUpdateImage,
     handleUpdateImageIndex,
     handleShareLink,
+    currentProduct,
+    images,
   };
 };
