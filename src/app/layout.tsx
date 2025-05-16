@@ -1,3 +1,5 @@
+import { Footer } from '@/components/template/footer.template';
+import { Header } from '@/components/template/header.template';
 import { AppProvider } from '@/context';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
@@ -27,7 +29,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${roboto.className} antialiased`}>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <Header />
+          <div className="my-8">{children}</div>
+          <Footer />
+        </AppProvider>
       </body>
     </html>
   );
