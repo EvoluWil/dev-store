@@ -1,3 +1,5 @@
+'use client';
+
 import { Product } from '@/types/product.type';
 import {
   getProductDefaultVariant,
@@ -5,6 +7,7 @@ import {
   getProductPrice,
 } from '@/utils/functions/product';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { ProductTitle } from '../molecules/product-title.molecule';
 
 type ProductCardProps = {
@@ -12,6 +15,8 @@ type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { push } = useRouter();
+
   const defaultVariant = getProductDefaultVariant(product);
 
   const price = getProductPrice(product, defaultVariant?.id);
@@ -20,7 +25,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const image = images?.[0];
 
   return (
-    <div className="flex flex-col bg-secondary rounded-lg shadow shadow-gray-500">
+    <div
+      className="flex flex-col bg-secondary rounded-lg cursor-pointer transition-all duration-500 hover:scale-98 active:scale-100"
+      role="button"
+      onClick={() => push(`/products/${product.id}`)}
+    >
       <Image
         src={image}
         alt={product.name}
