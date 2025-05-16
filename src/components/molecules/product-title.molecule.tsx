@@ -1,6 +1,6 @@
 'use client';
 
-import { formatCurrency } from '@/utils/formatter/currency';
+import { formatCurrency } from '@/utils/formatter/currency.util';
 import React, { useState } from 'react';
 import { Divider } from '../atoms/divider.atom';
 import { Rating } from '../atoms/rating.atom';
