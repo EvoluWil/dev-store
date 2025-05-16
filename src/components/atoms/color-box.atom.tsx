@@ -30,7 +30,7 @@ export const ColorBox: React.FC<ColorBoxProps> = ({
 
   return (
     <div
-      className={`w-18 h-8 ${commonClasses}`}
+      className={`w-18 h-8 border-2 border-secondary ${commonClasses}`}
       style={{ backgroundColor: color }}
       tabIndex={tabIndex}
       onClick={onClick}
