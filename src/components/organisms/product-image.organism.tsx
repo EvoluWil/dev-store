@@ -23,7 +23,7 @@ export const ProductImage = () => {
     <>
       <div className="flex gap-4">
         <ImageWatch src={selectedImage} alt={currentProduct?.name} />
-        <div className="flex flex-col gap-2 justify-between">
+        <div className="hidden flex-col gap-2 justify-between lg:flex">
           <Button icon="share" onClick={handleShareLink} />
           <div className="flex flex-col gap-2">
             <Button

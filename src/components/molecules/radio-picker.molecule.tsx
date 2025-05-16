@@ -41,7 +41,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
         </div>
       )}
 
-      <div className="flex gap-4" role="radiogroup">
+      <div className="flex gap-2 flex-wrap" role="radiogroup">
         {options.map((item, index) => (
           <Tooltip
             key={item.id}

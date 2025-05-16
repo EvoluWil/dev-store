@@ -41,15 +41,11 @@ export const ImageWatch: React.FC<ImageWatchProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${
-        isHovered ? 'cursor-zoom-in' : ''
-      }`}
-      style={{
-        width: '400px',
-        height: '400px',
-        borderRadius: '8px',
-        overflow: 'hidden',
-      }}
+      className={`
+      relative overflow-hidden rounded-md
+      ${isHovered ? 'cursor-zoom-in' : ''} 
+      w-[350px] xl:w-[30vw] h-[350px] xl:h-[30vw] max-w-[calc(100vw - 32px)] max-h-[calc(100vw - 32px)]
+    `}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
@@ -57,9 +53,9 @@ export const ImageWatch: React.FC<ImageWatchProps> = ({
       <Image
         src={src}
         alt={alt}
-        fill
-        className="object-cover transition-transform duration-200 ease-out pointer-events-none"
+        className="object-contain transition-transform duration-200 ease-out pointer-events-none"
         style={zoomStyle}
+        fill
       />
     </div>
   );
