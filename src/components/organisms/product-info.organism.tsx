@@ -9,8 +9,14 @@ import { RadioPicker } from '../molecules/radio-picker.molecule';
 import { ZipCodePicker } from '../molecules/zip-code-picker.molecule';
 
 export const ProductInfo = () => {
-  const { currentProduct, selectedVariant, handleSelectVariant } =
-    useProducts();
+  const {
+    currentProduct,
+    selectedVariant,
+    address,
+    loading,
+    handleSelectVariant,
+    handleCheckDelivery,
+  } = useProducts();
 
   return (
     <div>
@@ -73,9 +79,27 @@ export const ProductInfo = () => {
           </Button>
         </div>
         <ZipCodePicker
-          label="Enter your zip code to check delivery options and charges"
-          onChangeValue={console.log}
+          label="Enter your zip code to check delivery options"
+          onChangeValue={handleCheckDelivery}
+          loading={loading}
         />
+
+        {!!address && (
+          <div className="flex flex-col gap-2 mt-4">
+            <p className="text-primary text-sm font-medium">
+              Delivery available to:
+            </p>
+            <p className="text-secondary text-sm font-medium">
+              {address?.logradouro}, {address?.bairro} <br />
+              {address?.localidade} - {address?.uf}
+            </p>
+            {loading && (
+              <div className="text-secondary text-sm font-medium">
+                Checking delivery options...
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

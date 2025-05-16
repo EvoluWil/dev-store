@@ -1,6 +1,8 @@
 'use client';
 
 import { PRODUCTS } from '@/constants/products/products.constants';
+import { zipCodeService } from '@/services/zip-code.service';
+import { Address } from '@/types/address.type';
 import { Variant } from '@/types/commons.type';
 import { Product } from '@/types/product.type';
 import {
@@ -16,12 +18,16 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 
 type ProductContextType = {
   currentProduct: Product;
   selectedVariant: Variant;
+  address: Address | null;
   images: string[];
+  loading: boolean;
   handleSelectVariant: (value: string, type: 'color' | 'size') => void;
+  handleCheckDelivery: (zipCode: string) => Promise<void>;
 };
 
 const ProductContext = createContext<ProductContextType>(
@@ -32,6 +38,8 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   const { productId } = useParams<{ productId: string }>();
   const currentProduct = PRODUCTS?.find((p) => p.id === productId) as Product;
 
+  const [loading, setLoading] = useState(false);
+  const [address, setAddress] = useState<Address | null>(null);
   const [selectedVariant, setSelectedVariant] = useState(
     getProductDefaultVariant(currentProduct),
   );
@@ -65,16 +73,53 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
     [currentProduct],
   );
 
+  const onSaveAddress = (address: Address) => {
+    setAddress(address);
+  };
+
+  const handleCheckDelivery = useCallback(
+    async (zipCode: string): Promise<void> => {
+      try {
+        setLoading(true);
+        const result = await zipCodeService.checkDelivery(zipCode);
+
+        if (result?.erro) {
+          throw new Error('Invalid zip code');
+        }
+
+        onSaveAddress(result);
+      } catch {
+        toast.error(
+          'Error while checking delivery. Please verify the zip code and try again.',
+        );
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
   const images = getProductImages(currentProduct, selectedVariant?.id);
 
   const valueProvider = useMemo(
     () => ({
       currentProduct,
       selectedVariant,
+      address,
       images,
+      loading,
       handleSelectVariant,
+      handleCheckDelivery,
     }),
-    [currentProduct, selectedVariant, images, handleSelectVariant],
+    [
+      currentProduct,
+      selectedVariant,
+      address,
+      images,
+      loading,
+      handleSelectVariant,
+      handleCheckDelivery,
+    ],
   );
 
   return (

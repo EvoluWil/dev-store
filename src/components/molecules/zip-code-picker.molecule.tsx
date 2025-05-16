@@ -52,13 +52,17 @@ export const ZipCodePicker = ({
             value={value}
             onChange={() => null}
             type="text"
-            className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 p-2.5 mt-1"
+            className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 pe-10 p-2.5 mt-1"
             placeholder={label}
             {...inputBaseProps}
           />
         </label>
         {hasLoading && (
-          <div className="absolute inset-y-0 end-4 flex items-center ps-3.5 pointer-events-none">
+          <div
+            className={`absolute inset-y-0 end-2 flex items-center ps-3.5 pointer-events-none ${
+              value ? 'mt-8' : 'mt-0'
+            }`}
+          >
             <Icon name="autorenew" className="animate-spin" />
           </div>
         )}
