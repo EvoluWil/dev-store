@@ -6,15 +6,11 @@ import React, { useRef, useState } from 'react';
 type ImageWatchProps = {
   src: string;
   alt?: string;
-  width?: number;
-  height?: number;
 };
 
 export const ImageWatch: React.FC<ImageWatchProps> = ({
   src,
   alt = 'Image',
-  width = 400,
-  height = 400,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({});
@@ -48,7 +44,12 @@ export const ImageWatch: React.FC<ImageWatchProps> = ({
       className={`relative overflow-hidden ${
         isHovered ? 'cursor-zoom-in' : ''
       }`}
-      style={{ width, height }}
+      style={{
+        width: '400px',
+        height: '400px',
+        borderRadius: '8px',
+        overflow: 'hidden',
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}

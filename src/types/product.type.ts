@@ -1,8 +1,8 @@
 type AttributeName = 'color' | 'size';
 
 type AttributeValue = {
+  id: string;
   value: string;
-  hex?: string;
   label?: string;
 };
 

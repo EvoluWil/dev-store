@@ -12,7 +12,7 @@ enum TypeEnum {
 
 type RadioPickerProps = {
   options: Option[];
-  onSelect: (color: string) => void;
+  onSelect: (value: string) => void;
   value: string;
   type: keyof typeof TypeEnum;
   label?: string;
@@ -26,10 +26,10 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
   label,
 }) => {
   const selectedValue =
-    options.find((item) => item.value === value) || options?.[0] || null;
+    options.find((item) => item.id === value) || options?.[0] || null;
 
   const handleSelect = (item: Option) => {
-    onSelect(item.value);
+    onSelect(item.id);
   };
 
   return (
@@ -41,13 +41,13 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
         </div>
       )}
 
-      <div className="flex gap-2" role="radiogroup">
+      <div className="flex gap-4" role="radiogroup">
         {options.map((item, index) => (
-          <Tooltip key={item.value} title={item.label}>
+          <Tooltip key={item.id} title={item.label}>
             {type === TypeEnum.SIZE && (
               <SizeBox
                 label={item.value}
-                selected={item.value === selectedValue?.value}
+                selected={item.id === selectedValue?.id}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
               />
@@ -56,7 +56,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
             {type === TypeEnum.COLOR && (
               <ColorBox
                 color={item.value}
-                selected={item.value === selectedValue?.value}
+                selected={item.id === selectedValue?.id}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
               />
@@ -66,7 +66,7 @@ export const RadioPicker: React.FC<RadioPickerProps> = ({
               <ImageBox
                 src={item.value}
                 alt={item.label}
-                selected={item.value === selectedValue?.value}
+                selected={item.id === selectedValue?.id}
                 tabIndex={index}
                 onClick={() => handleSelect(item)}
               />

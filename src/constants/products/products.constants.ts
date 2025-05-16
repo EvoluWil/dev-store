@@ -34,13 +34,14 @@ export const PRODUCTS: Product[] = [
         id: '001-001',
         attributes: {
           color: {
-            value: 'blue',
-            hex: '#A0D3E8',
-            label: 'Azul Claro',
+            id: 'blue',
+            value: '#A0D3E8',
+            label: 'Light Blue',
           },
           size: {
-            value: 'P',
-            label: 'Pequeno',
+            id: 'small',
+            value: 'S',
+            label: 'Small',
           },
         },
         price: 799,
@@ -51,13 +52,14 @@ export const PRODUCTS: Product[] = [
         id: '001-002',
         attributes: {
           color: {
-            value: 'yellow',
-            hex: '#FFF3B0',
-            label: 'Amarelo Claro',
+            id: 'yellow',
+            value: '#FFF3B0',
+            label: 'Light Yellow',
           },
           size: {
-            value: 'P',
-            label: 'Pequeno',
+            id: 'small',
+            value: 'S',
+            label: 'Small',
           },
         },
         price: 799,
@@ -68,13 +70,32 @@ export const PRODUCTS: Product[] = [
         id: '001-003',
         attributes: {
           color: {
-            value: 'black',
-            hex: '#000000',
-            label: 'Preto',
+            id: 'black',
+            value: '#000000',
+            label: 'Black',
           },
           size: {
+            id: 'medium',
             value: 'M',
-            label: 'Médio',
+            label: 'Medium',
+          },
+        },
+        price: 799,
+        quantity: 5,
+        default: false,
+      },
+      {
+        id: '001-004',
+        attributes: {
+          color: {
+            id: 'black',
+            value: '#000000',
+            label: 'Black',
+          },
+          size: {
+            id: 'large',
+            value: 'L',
+            label: 'Large',
           },
         },
         price: 799,
@@ -107,12 +128,13 @@ export const PRODUCTS: Product[] = [
         id: '002-001',
         attributes: {
           color: {
-            value: 'white',
-            hex: '#FFFFFF',
-            label: 'Branco',
+            id: 'white',
+            value: '#FFFFFF',
+            label: 'White',
           },
           size: {
-            value: 'G',
+            id: 'large',
+            value: 'L',
             label: 'Grande',
           },
         },
@@ -124,13 +146,14 @@ export const PRODUCTS: Product[] = [
         id: '002-002',
         attributes: {
           color: {
-            value: 'gray',
-            hex: '#B0B0B0',
-            label: 'Cinza',
+            id: 'gray',
+            value: '#B0B0B0',
+            label: 'Gray',
           },
           size: {
+            id: 'medium',
             value: 'M',
-            label: 'Médio',
+            label: 'Medium',
           },
         },
         price: 899,
@@ -166,13 +189,14 @@ export const PRODUCTS: Product[] = [
         id: '003-001',
         attributes: {
           color: {
-            value: 'blue',
-            hex: '#00296b',
-            label: 'Azul Marinho',
+            id: 'blue',
+            value: '#00296b',
+            label: 'Light Navy',
           },
           size: {
-            value: 'P',
-            label: 'Pequeno',
+            id: 'small',
+            value: 'S',
+            label: 'Small',
           },
         },
         price: 849,
@@ -183,13 +207,14 @@ export const PRODUCTS: Product[] = [
         id: '003-002',
         attributes: {
           color: {
-            value: 'white',
-            hex: '#ffffff',
-            label: 'Branco',
+            id: 'white',
+            value: '#ffffff',
+            label: 'White',
           },
           size: {
-            value: 'G',
-            label: 'Grande',
+            id: 'large',
+            value: 'L',
+            label: 'Large',
           },
         },
         price: 849,
@@ -226,9 +251,9 @@ export const PRODUCTS: Product[] = [
         id: '005-001',
         attributes: {
           color: {
-            value: 'yellow',
-            hex: '#fff3b0',
-            label: 'Amarelo Claro',
+            id: 'yellow',
+            value: '#fff3b0',
+            label: 'Light Yellow',
           },
         },
         price: 499,
@@ -239,9 +264,9 @@ export const PRODUCTS: Product[] = [
         id: '005-002',
         attributes: {
           color: {
-            value: 'green',
-            hex: '#1b4332',
-            label: 'Verde Escuro',
+            id: 'green',
+            value: '#1b4332',
+            label: 'Dark Green',
           },
         },
         price: 499,

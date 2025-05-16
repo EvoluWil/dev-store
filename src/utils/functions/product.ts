@@ -1,26 +1,42 @@
 import { DEFAULT_IMAGE } from '@/constants/images/default-image.constants';
-import { Option } from '@/types/commons.type';
+import { Option, Variant } from '@/types/commons.type';
 import { Product } from '@/types/product.type';
 
-export const getProductDefaultVariant = (product: Product): string | null => {
+export const getProductDefaultVariant = (product: Product): Variant => {
+  const variant: Variant = {
+    id: null,
+    color: null,
+    size: null,
+  };
+
   if (!product?.has_variations) {
-    return null;
+    return variant;
   }
 
   const defaultVariant = product?.variations?.find(
     (variant) => variant.default,
   );
 
-  if (defaultVariant) {
-    return defaultVariant.id;
+  if (!defaultVariant) {
+    return variant;
   }
 
-  return product?.variations?.[0]?.id || null;
+  variant.id = defaultVariant?.id;
+
+  if (defaultVariant?.attributes?.color) {
+    variant.color = defaultVariant?.attributes?.color?.id;
+  }
+
+  if (defaultVariant?.attributes?.size) {
+    variant.size = defaultVariant?.attributes?.size?.id;
+  }
+
+  return variant;
 };
 
 export const getProductImages = (
   product: Product,
-  selectedVariant: string | null,
+  selectedVariantId: string | null,
 ): string[] => {
   const defaultImage = [DEFAULT_IMAGE];
 
@@ -28,15 +44,15 @@ export const getProductImages = (
     return product?.images?.length ? product?.images : defaultImage;
   }
 
-  if (!selectedVariant) {
+  if (!selectedVariantId) {
     return defaultImage;
   }
 
   const variant = product?.variations?.find(
-    (variant) => variant.id === selectedVariant,
+    (variant) => variant.id === selectedVariantId,
   );
 
-  const color = variant?.attributes?.color?.value;
+  const color = variant?.attributes?.color?.id;
   if (!color) {
     return defaultImage;
   }
@@ -52,14 +68,14 @@ export const getProductImages = (
 
 export const getProductPrice = (
   product: Product,
-  selectedVariant: string | null,
+  selectedVariantId: string | null,
 ): number => {
   if (!product?.has_variations) {
     return product?.price || 0;
   }
 
   const variant = product?.variations?.find(
-    (variant) => variant.id === selectedVariant,
+    (variant) => variant.id === selectedVariantId,
   );
 
   return variant?.price || 0;

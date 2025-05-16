@@ -1,52 +1,65 @@
-import { Product } from '@/types/product.type';
-import {
-  getProductPrice,
-  getProductVariantsAttributes,
-} from '@/utils/functions/product';
+'use client';
+
+import { useProducts } from '@/context/product.context';
+import { filterDuplicate } from '@/utils/functions/array.util';
+import { getProductPrice } from '@/utils/functions/product';
 import { Button } from '../molecules/button.molecule';
 import { ProductTitle } from '../molecules/product-title.molecule';
 import { RadioPicker } from '../molecules/radio-picker.molecule';
 
-type ProductInfoProps = {
-  product: Product;
-  variantId: string | null;
-};
+export const ProductInfo = () => {
+  const { currentProduct, selectedVariant, handleSelectVariant } =
+    useProducts();
 
-export const ProductInfo: React.FC<ProductInfoProps> = ({
-  product,
-  variantId,
-}) => {
   return (
     <div>
       <ProductTitle
-        price={getProductPrice(product, variantId)}
-        name={product.name}
-        description={
-          product.description +
-          product.description +
-          product.description +
-          product.description +
-          product.description +
-          product.description +
-          product.description +
-          product.description
-        }
-        rating={product.rating}
+        price={getProductPrice(currentProduct, selectedVariant?.id)}
+        name={currentProduct.name}
+        description={currentProduct.description}
+        rating={currentProduct.rating}
       />
       <div className="flex flex-col gap-4">
-        {product.has_variations && (
+        {currentProduct.has_variations && (
           <div className="flex flex-col gap-4">
-            {Object.entries(getProductVariantsAttributes(product)).map(
-              ([attribute, options]) => (
-                <RadioPicker
-                  key={attribute}
-                  options={options}
-                  label={attribute}
-                  value={variantId}
-                  onSelect={console.log}
-                  type={attribute === 'color' ? 'COLOR' : 'SIZE'}
-                />
-              ),
+            {currentProduct?.variationAttributes?.includes('color') && (
+              <RadioPicker
+                options={filterDuplicate(
+                  currentProduct?.variations?.map((variant) => ({
+                    label: variant?.attributes?.color?.label || '',
+                    value: variant?.attributes?.color?.value || '',
+                    id: variant?.attributes?.color?.id || '',
+                  })) || [],
+                  'id',
+                )}
+                label="Color"
+                value={selectedVariant?.color || ''}
+                onSelect={(value) => handleSelectVariant(value, 'color')}
+                type="COLOR"
+              />
+            )}
+
+            {currentProduct?.variationAttributes?.includes('size') && (
+              <RadioPicker
+                options={
+                  currentProduct?.variations
+                    ?.filter((variant) =>
+                      !variant?.attributes?.color
+                        ? true
+                        : variant?.attributes?.color?.id ===
+                          selectedVariant?.color,
+                    )
+                    .map((variant) => ({
+                      label: variant?.attributes?.size?.label || '',
+                      value: variant?.attributes?.size?.value || '',
+                      id: variant?.attributes?.size?.id || '',
+                    })) || []
+                }
+                label="Size"
+                value={selectedVariant?.size || ''}
+                onSelect={(value) => handleSelectVariant(value, 'size')}
+                type="SIZE"
+              />
             )}
           </div>
         )}
