@@ -3,9 +3,10 @@ import { Product } from '@/types/product.type';
 export const PRODUCTS: Product[] = [
   {
     id: '001',
-    name: 'Camiseta Slim Masculina Básica',
+    name: "Basic Slim Fit Men's T-Shirt",
     rating: 4.5,
-    description: 'Camiseta masculina básica de algodão com modelagem slim.',
+    description:
+      "This basic slim fit men's cotton t-shirt is designed for everyday comfort and style. Crafted from soft, breathable cotton, it features a modern silhouette that flatters any body type. Perfect for layering or wearing on its own, this versatile tee is a wardrobe essential for any occasion.",
     has_variations: true,
     variationAttributes: ['color', 'size'],
     imagesByAttribute: {
@@ -63,7 +64,7 @@ export const PRODUCTS: Product[] = [
           },
         },
         price: 799,
-        quantity: 10,
+        quantity: 0,
         default: true,
       },
       {
@@ -106,9 +107,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '002',
-    name: 'Camiseta Estampada Masculina',
+    name: "Printed Men's T-Shirt",
     rating: 4.2,
-    description: 'Camiseta masculina com estampa frontal moderna.',
+    description:
+      "Elevate your casual look with this men's t-shirt featuring a modern front print. Made from high-quality fabric, it offers both comfort and durability. The eye-catching design makes it perfect for outings, while the soft material ensures you stay comfortable all day long.",
     has_variations: true,
     variationAttributes: ['color', 'size'],
     imagesByAttribute: {
@@ -133,9 +135,9 @@ export const PRODUCTS: Product[] = [
             label: 'White',
           },
           size: {
-            id: 'large',
-            value: 'L',
-            label: 'Grande',
+            id: 'small',
+            value: 'S',
+            label: 'Small',
           },
         },
         price: 899,
@@ -144,6 +146,42 @@ export const PRODUCTS: Product[] = [
       },
       {
         id: '002-002',
+        attributes: {
+          color: {
+            id: 'white',
+            value: '#FFFFFF',
+            label: 'White',
+          },
+          size: {
+            id: 'medium',
+            value: 'M',
+            label: 'Medium',
+          },
+        },
+        price: 899,
+        quantity: 0,
+        default: true,
+      },
+      {
+        id: '002-003',
+        attributes: {
+          color: {
+            id: 'white',
+            value: '#FFFFFF',
+            label: 'White',
+          },
+          size: {
+            id: 'large',
+            value: 'L',
+            label: 'Large',
+          },
+        },
+        price: 899,
+        quantity: 8,
+        default: true,
+      },
+      {
+        id: '002-004',
         attributes: {
           color: {
             id: 'gray',
@@ -160,13 +198,32 @@ export const PRODUCTS: Product[] = [
         quantity: 6,
         default: false,
       },
+      {
+        id: '002-005',
+        attributes: {
+          color: {
+            id: 'gray',
+            value: '#B0B0B0',
+            label: 'Gray',
+          },
+          size: {
+            id: 'large',
+            value: 'L',
+            label: 'Large',
+          },
+        },
+        price: 899,
+        quantity: 0,
+        default: false,
+      },
     ],
   },
   {
     id: '003',
-    name: 'Camiseta Gola V Masculina',
+    name: "Men's V-Neck T-Shirt",
     rating: 4.0,
-    description: 'Camiseta masculina com gola V em tecido leve.',
+    description:
+      "Experience ultimate comfort with this men's v-neck t-shirt crafted from lightweight, breathable fabric. The v-neck design adds a touch of sophistication, making it suitable for both casual and semi-formal occasions. Its relaxed fit ensures ease of movement throughout the day.",
     has_variations: true,
     variationAttributes: ['color', 'size'],
     imagesByAttribute: {
@@ -207,6 +264,24 @@ export const PRODUCTS: Product[] = [
         id: '003-002',
         attributes: {
           color: {
+            id: 'blue',
+            value: '#00296b',
+            label: 'Light Navy',
+          },
+          size: {
+            id: 'medium',
+            value: 'M',
+            label: 'Medium',
+          },
+        },
+        price: 849,
+        quantity: 7,
+        default: true,
+      },
+      {
+        id: '003-002',
+        attributes: {
+          color: {
             id: 'white',
             value: '#ffffff',
             label: 'White',
@@ -225,9 +300,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '004',
-    name: 'Xícara de Porcelana Branca',
+    name: 'White Porcelain Cup',
     rating: 4.8,
-    description: 'Xícara de porcelana branca com capacidade de 200ml.',
+    description:
+      'Enjoy your favorite beverages in this elegant white porcelain cup, featuring a 200ml capacity. Its classic design and durable construction make it ideal for daily use, whether at home or in the office. The smooth finish adds a touch of sophistication to your drinkware collection.',
     has_variations: false,
     images: ['/images/products/004-1.webp'],
     price: 299,
@@ -235,9 +311,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '005',
-    name: 'Ecobag Estampada Tie-Dye',
+    name: 'Tie-Dye Printed Ecobag',
     rating: 4.6,
-    description: 'Ecobag de algodão com estampa tie-dye colorida.',
+    description:
+      'Carry your essentials in style with this cotton ecobag featuring a vibrant tie-dye print. Spacious and eco-friendly, it is perfect for shopping, travel, or everyday use. The sturdy handles and colorful design make it both practical and fashionable.',
     has_variations: true,
     variationAttributes: ['color'],
     imagesByAttribute: {
