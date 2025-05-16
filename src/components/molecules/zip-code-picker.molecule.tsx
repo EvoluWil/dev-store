@@ -7,6 +7,7 @@ import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 import { Icon } from '../atoms/icon.atom';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
   loading?: boolean;
   defaultValue?: string;
   onChangeValue: (value: string) => void;
@@ -16,6 +17,7 @@ export const ZipCodePicker = ({
   defaultValue,
   onChangeValue,
   loading = false,
+  label,
   ...inputBaseProps
 }: Props) => {
   const [value, setValue] = useState<string>(defaultValue || '');
@@ -42,13 +44,19 @@ export const ZipCodePicker = ({
       maskPlaceholder={null}
     >
       <div className="relative">
-        <input
-          value={value}
-          onChange={() => null}
-          type="text"
-          className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 p-2.5 mt-1"
-          {...inputBaseProps}
-        />
+        {}
+        <label className="text-primary text-sm font-medium">
+          {value && label}
+
+          <input
+            value={value}
+            onChange={() => null}
+            type="text"
+            className="bg-secondary border border-secondary text-primary text-sm rounded-lg block w-full ps-4 p-2.5 mt-1"
+            placeholder={label}
+            {...inputBaseProps}
+          />
+        </label>
         {hasLoading && (
           <div className="absolute inset-y-0 end-4 flex items-center ps-3.5 pointer-events-none">
             <Icon name="autorenew" className="animate-spin" />

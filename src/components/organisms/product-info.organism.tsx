@@ -73,7 +73,7 @@ export const ProductInfo = () => {
           </Button>
         </div>
         <ZipCodePicker
-          placeholder="Enter your zip code to check delivery options and charges"
+          label="Enter your zip code to check delivery options and charges"
           onChangeValue={console.log}
         />
       </div>
