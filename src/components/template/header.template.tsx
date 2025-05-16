@@ -9,7 +9,7 @@ export const Header = () => {
           alt="Logo"
           width={160}
           height={40}
-          className="object-contain dark:invert"
+          className="dark:invert"
         />
       </div>
     </header>

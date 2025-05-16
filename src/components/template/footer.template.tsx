@@ -12,7 +12,7 @@ export const Footer = () => {
           alt="Logo"
           width={160}
           height={40}
-          className="object-contain dark:invert"
+          className="dark:invert"
         />
         <div className="flex items-center gap-4">
           <a

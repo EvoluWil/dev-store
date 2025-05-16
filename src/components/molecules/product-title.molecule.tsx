@@ -79,14 +79,5 @@ export const ProductTitle: React.FC<ProductTitleProps> = ({
         </p>
       </div>
     </div>
-
-    // <div className="flex flex-col items-start gap-4">
-    //   <h1 className="text-lg font-bold text-primary">{name}</h1>
-    //   <div className="flex items-center gap-2 justify-between w-full">
-    //     <span className="text-xl text-secondary">{formatCurrency(price)}</span>
-    //     <Rating value={rating} />
-    //   </div>
-    //   <Divider />
-    // </div>
   );
 };

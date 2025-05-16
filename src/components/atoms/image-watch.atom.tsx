@@ -55,6 +55,7 @@ export const ImageWatch: React.FC<ImageWatchProps> = ({
         alt={alt}
         className="object-contain transition-transform duration-200 ease-out pointer-events-none"
         style={zoomStyle}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         fill
       />
     </div>
