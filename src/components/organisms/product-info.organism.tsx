@@ -6,6 +6,7 @@ import { getProductPrice } from '@/utils/functions/product';
 import { Button } from '../molecules/button.molecule';
 import { ProductTitle } from '../molecules/product-title.molecule';
 import { RadioPicker } from '../molecules/radio-picker.molecule';
+import { ZipCodePicker } from '../molecules/zip-code-picker.molecule';
 
 export const ProductInfo = () => {
   const { currentProduct, selectedVariant, handleSelectVariant } =
@@ -71,6 +72,10 @@ export const ProductInfo = () => {
             Compare
           </Button>
         </div>
+        <ZipCodePicker
+          placeholder="Enter your zip code to check delivery options and charges"
+          onChangeValue={console.log}
+        />
       </div>
     </div>
   );
