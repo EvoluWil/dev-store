@@ -1,6 +1,7 @@
 'use client';
 
 import { PRODUCTS } from '@/constants/products/products.constants';
+import { cookieService } from '@/services/cookie.service';
 import { zipCodeService } from '@/services/zip-code.service';
 import { Address } from '@/types/address.type';
 import { Variant } from '@/types/commons.type';
@@ -15,6 +16,7 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -82,14 +84,11 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
         newVariant.size = variant?.attributes?.size?.id;
       }
 
+      cookieService.saveProductVariant(productId, newVariant);
       setTempVariant(newVariant);
     },
-    [currentProduct],
+    [currentProduct?.variations, productId],
   );
-
-  const onSaveAddress = (address: Address) => {
-    setAddress(address);
-  };
 
   const handleCheckDelivery = useCallback(
     async (zipCode: string): Promise<void> => {
@@ -101,7 +100,8 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
           throw new Error('Invalid zip code');
         }
 
-        onSaveAddress(result);
+        cookieService.saveAddress(result);
+        setAddress(result);
       } catch {
         toast.error(
           'Error while checking delivery. Please verify the zip code and try again.',
@@ -122,6 +122,20 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const images = getProductImages(currentProduct, selectedVariant?.id);
+
+  useEffect(() => {
+    if (cookieService.exists(productId, 'product')) {
+      const savedVariant = cookieService.getProductVariant(productId);
+      if (savedVariant) {
+        setTempVariant(savedVariant);
+      }
+    }
+
+    const savedAddress = cookieService.getAddress();
+    if (savedAddress) {
+      setAddress(savedAddress);
+    }
+  }, [productId]);
 
   const valueProvider = useMemo(
     () => ({
