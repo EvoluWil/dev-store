@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dev Store 🛍️
 
-## Getting Started
+Uma aplicação de front-end para E-commerce desenvolvida com **React** e **Tailwind CSS**. O projeto simula uma loja virtual moderna, responsiva e funcional, com foco em experiência de usuário e persistência de estado.
 
-First, run the development server:
+## 🔗 Links
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [LinkedIn](https://www.linkedin.com/in/evoluwill)
+- [Portfólio](https://willianrodrigues-tk.vercel.app)
+
+## 🧩 Funcionalidades
+
+- ✅ Listagem de produtos com imagem, nome, preço e avaliação.
+- ✅ Página de detalhes do produto com:
+  - Imagem principal (30~35% da tela), com zoom no hover focado no trecho onde o mouse está.
+  - Miniaturas clicáveis para trocar a imagem principal.
+  - Seletores dinâmicos de variantes (cor e/ou tamanho), gerados com base em dados.
+  - Exibição de preço e disponibilidade.
+  - Botão de compra desabilitado caso não haja estoque.
+  - Link compartilhável direto para o produto.
+- ✅ Validação de **CEP** usando [ViaCEP](https://viacep.com.br), exibindo endereço formatado ao digitar um CEP válido.
+- ✅ Persistência de estado do usuário (seleções, visualizações, endereço etc.) por **15 minutos**, utilizando **cookies**.
+- ✅ Layout responsivo para mobile, tablet e desktop.
+- ✅ Tema claro e escuro baseado no sistema operacional do usuário.
+
+## 🧠 Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Next.js](https://nextjs.org/)
+- [Cookies](https://github.com/andreizanik/cookies-next)
+- [ViaCep](https://viacep.com.br/)
+
+## 🛒 Estrutura de Produto (Exemplo)
+
+```js
+{
+  id: '003',
+  name: "Men's V-Neck T-Shirt",
+  rating: 4.0,
+  description: "...",
+  has_variations: true,
+  variationAttributes: ['color', 'size'],
+  imagesByAttribute: {
+    color: {
+      blue: ['img1.webp', 'img2.webp'],
+      white: ['img3.webp', 'img4.webp']
+    }
+  },
+  variations: [
+    {
+      id: '003-001',
+      attributes: {
+        color: { id: 'blue', value: '#00296b', label: 'Light Navy' },
+        size: { id: 'small', value: 'S', label: 'Small' }
+      },
+      price: 849,
+      quantity: 7,
+      default: true
+    }
+  ]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Produtos com ou sem variações são renderizados de forma dinâmica, permitindo flexibilidade de escalabilidade.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📷 Capturas de Tela
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Print detalhe de imagem](https://github.com/EvoluWil/dev-store/blob/master/public/images/read-me/print-product-detail.png)
+![Print lista recomendada](https://github.com/EvoluWil/dev-store/blob/master/public/images/read-me/print-product-list.png)
 
-## Learn More
+## 🚀 Como executar localmente
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone o repositório
+git clone https://github.com/EvoluWil/dev-store.git
+cd dev-store
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Instale as dependências
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Execute o projeto
+npm run dev
+```
 
-## Deploy on Vercel
+Acesse: `http://localhost:3000`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+---
+
+Desenvolvido com 💻 por [Willian Rodrigues](https://www.linkedin.com/in/EvoluWil)
